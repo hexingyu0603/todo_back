@@ -20,8 +20,7 @@ const getAllTodos = asyncHandler(async (req, res) => {
       id,
       value,
       is_completed,
-      created_at,
-      updated_at
+      created_at
     FROM todo_list 
     ORDER BY created_at DESC
   `;
@@ -53,8 +52,7 @@ const getTodoById = asyncHandler(async (req, res) => {
       id,
       value,
       is_completed,
-      created_at,
-      updated_at
+      created_at
     FROM todo_list 
     WHERE id = ?
   `;
@@ -106,8 +104,7 @@ const createTodo = asyncHandler(async (req, res) => {
       id,
       value,
       is_completed,
-      created_at,
-      updated_at
+      created_at
     FROM todo_list 
     WHERE id = ?
   `;
@@ -169,7 +166,6 @@ const updateTodo = asyncHandler(async (req, res) => {
     throw new AppError('请提供要更新的字段', 400);
   }
   
-  updateFields.push('updated_at = CURRENT_TIMESTAMP');
   updateValues.push(id);
   
   const sql = `
@@ -186,8 +182,7 @@ const updateTodo = asyncHandler(async (req, res) => {
       id,
       value,
       is_completed,
-      created_at,
-      updated_at
+      created_at
     FROM todo_list 
     WHERE id = ?
   `;
@@ -292,7 +287,7 @@ const toggleTodoStatus = asyncHandler(async (req, res) => {
   
   const sql = `
     UPDATE todo_list 
-    SET is_completed = ?, updated_at = CURRENT_TIMESTAMP
+    SET is_completed = ?
     WHERE id = ?
   `;
   
@@ -304,8 +299,7 @@ const toggleTodoStatus = asyncHandler(async (req, res) => {
       id,
       value,
       is_completed,
-      created_at,
-      updated_at
+      created_at
     FROM todo_list 
     WHERE id = ?
   `;

@@ -84,8 +84,7 @@ CREATE TABLE todo_list (
   id INT AUTO_INCREMENT PRIMARY KEY,
   value VARCHAR(255) NOT NULL,
   is_completed TINYINT(1) DEFAULT 0,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
@@ -128,8 +127,7 @@ GET /api/todos
       "id": 1,
       "value": "完成项目文档",
       "is_completed": 0,
-      "created_at": "2024-01-01T10:00:00.000Z",
-      "updated_at": "2024-01-01T10:00:00.000Z"
+      "created_at": "2024-01-01T10:00:00.000Z"
     }
   ],
   "count": 1
